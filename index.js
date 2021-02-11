@@ -1,14 +1,27 @@
-import Vue from 'vue';
+import Vue from "vue";
 
 const members = [
-  { first_name: 'Adam', last_name: 'Gospodarczyk', role: 'Member'},
-  { first_name: 'Przemek', last_name: 'Smyrdek', role: 'Member'},
-  { first_name: 'Marcin', last_name: 'Czarkowski', role: 'Member'}
+  { id: 0, first_name: "Adam", last_name: "Gospodarczyk", role: "Member" },
+  { id: 1, first_name: "Przemek", last_name: "Smyrdek", role: "Member" },
+  { id: 2, first_name: "Marcin", last_name: "Czarkowski", role: "Member" }
 ];
 
-new Vue({
-  el: '#app',
-  data: {
+Vue.component("member-item", {
+  props: ["member"],
+  template: `        <div class="flex justify-between px-2 py-2">
+          <p class="flex text-gray-700">
+            <svg class="w-2 text-gray-500 mx-2" viewBox="0 0 8 8" fill="currentColor">
+              <circle cx="4" cy="4" r="3" />
+            </svg>
+            {{member.first_name + " " + member.last_name}}
+          </p>
+          <p class="text-gray-500 font-thin">{{member.role}}</p>
+        </div>`
+});
 
+new Vue({
+  el: "#app",
+  data: {
+    members
   }
-})
+});
