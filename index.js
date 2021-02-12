@@ -70,5 +70,4 @@ new Vue({
 
 // https://vuejs.org/v2/guide/components.html?#Listening-to-Child-Components-Events
 
-
 //https://vuejs.org/v2/guide/components.html?#Using-v-model-on-Components
