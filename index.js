@@ -26,10 +26,13 @@ Vue.component("member-item", {
 });
 
 Vue.component("search-input", {
-  props: ["search"],
+  // props: ["search"],
   template: `
   <input 
-    v-model="search" 
+
+    v-bind:value="value"
+    v-on:input="$emit('input', $event.target.value)"
+
     type="text" 
     class="pl-8 p-1 bg-gray-200 w-full rounded relative" 
     placeholder="Wyszukaj kontakt">`
@@ -45,7 +48,15 @@ new Vue({
   methods: {
     onEnlargeText: function(enlargeAmount) {
       this.postFontSize += enlargeAmount;
-    }
+    },
+    searchText: function(text) {
+    //  this.search += text
+        return this.members.filter(member => {
+        return member.first_name
+          .toLowerCase()
+          .includes(this.text.toLowerCase());
+      });
+    },
   },
   computed: {
     filterMembers() {

@@ -21,7 +21,13 @@
 				</svg>
 
                 <search-input 
-                  v-bind:search="search">
+                  v-bind:search="search"
+                  
+                  v-bind:value="searchText"
+                  v-on:input="searchText = $event"
+                  >
+
+                  
                 </search-input>
 
 
