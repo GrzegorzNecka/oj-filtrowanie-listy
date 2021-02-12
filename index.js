@@ -8,6 +8,7 @@ const members = [
 
 Vue.component("member-item", {
   props: ["member"],
+
   template: ` 
   <div 
     class="flex justify-between px-2 py-2">
@@ -40,6 +41,11 @@ new Vue({
     search: "",
     members,
     postFontSize: 1
+  },
+  methods: {
+    onEnlargeText: function(enlargeAmount) {
+      this.postFontSize += enlargeAmount;
+    }
   },
   computed: {
     filterMembers() {

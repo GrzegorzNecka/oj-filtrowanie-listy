@@ -30,7 +30,7 @@
 
                 <member-item 
                   :style="{ fontSize: postFontSize + 'em' }"
-                  v-on:enlarge-text="postFontSize += $event"
+                  v-on:enlarge-text="onEnlargeText"
 
                   v-for="member in members" 
                   v-bind:member="member"
