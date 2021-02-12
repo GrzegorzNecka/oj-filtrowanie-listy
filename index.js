@@ -12,8 +12,11 @@ Vue.component("member-item", {
   <div 
     class="flex justify-between px-2 py-2">
           <p class="flex text-gray-700">
-            <svg class="w-2 text-gray-500 mx-2" viewBox="0 0 8 8" fill="currentColor">
-              <circle cx="4" cy="4" r="3" />
+            <svg 
+            
+               v-on:click="$emit('enlarge-text', 0.1)"
+            
+              class="w-2 text-gray-500 mx-2" viewBox="0 0 8 8" fill="currentColor"> <circle cx="4" cy="4" r="3" />
             </svg>
             {{member.first_name + " " + member.last_name}}
           </p>
@@ -23,12 +26,6 @@ Vue.component("member-item", {
 
 Vue.component("search-input", {
   props: ["search"],
-  // data: function() {
-  //   return {
-  //     search: ""
-  //   };
-  // },
-
   template: `
   <input 
     v-model="search" 
@@ -46,6 +43,7 @@ new Vue({
   },
   computed: {
     filterMembers() {
+      console.log(this.postFontSize);
       return this.members.filter(member => {
         return member.first_name
           .toLowerCase()
