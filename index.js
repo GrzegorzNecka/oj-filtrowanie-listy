@@ -23,6 +23,12 @@ Vue.component("member-item", {
 
 Vue.component("search-input", {
   props: ["search"],
+  // data: function() {
+  //   return {
+  //     search: ""
+  //   };
+  // },
+
   template: `
   <input 
     v-model="search" 
@@ -47,3 +53,6 @@ new Vue({
     }
   }
 });
+
+
+// https://vuejs.org/v2/guide/components.html?#Listening-to-Child-Components-Events
