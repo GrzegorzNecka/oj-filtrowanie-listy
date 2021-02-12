@@ -17,7 +17,7 @@ Vue.component("member-item", {
             </svg>
             {{member.first_name + " " + member.last_name}}
           </p>
-          <p class="text-gray-500 font-thin">{{member.role}}</p>
+          <p  class="text-gray-500 font-thin">{{member.role}}</p>
         </div>`
 });
 
@@ -41,7 +41,8 @@ new Vue({
   el: "#app",
   data: {
     search: "",
-    members
+    members,
+    postFontSize: 1
   },
   computed: {
     filterMembers() {
@@ -53,6 +54,5 @@ new Vue({
     }
   }
 });
-
 
 // https://vuejs.org/v2/guide/components.html?#Listening-to-Child-Components-Events

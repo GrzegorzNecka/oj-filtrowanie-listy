@@ -20,15 +20,19 @@
 						fill="black" fill-opacity="0.54" />
 				</svg>
 				<!-- <input type="text" class="pl-8 p-1 bg-gray-200 w-full rounded relative" placeholder="Wyszukaj kontakt"> -->
-				<search-input v-bind:search="search">
-
+				<search-input 
+          v-bind:search="search">
 				</search-input>
 
 
 			</div>
 			<div class="py-5 px-3">
 
-				<member-item v-for="member in members" v-bind:member="member" v-bind:key="member.id">
+				<member-item 
+          :style="{ fontSize: postFontSize + 'em' }"
+          v-for="member in members" 
+          v-bind:member="member"
+          v-bind:key="member.id">
 				</member-item>
 
 				<div class="bg-gray-300 flex flex-row-reverse px-2 py-3">
