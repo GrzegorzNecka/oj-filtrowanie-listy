@@ -26,7 +26,8 @@ Vue.component("member-item", {
 });
 
 Vue.component("search-input", {
-  // props: ["search"],
+  props: ["value"],
+
   template: `
   <input 
 
@@ -50,13 +51,10 @@ new Vue({
       this.postFontSize += enlargeAmount;
     },
     searchText: function(text) {
-    //  this.search += text
-        return this.members.filter(member => {
-        return member.first_name
-          .toLowerCase()
-          .includes(this.text.toLowerCase());
-      });
-    },
+      // this.search += text;
+      console.log(this.search);
+      return text;
+    }
   },
   computed: {
     filterMembers() {
@@ -71,3 +69,6 @@ new Vue({
 });
 
 // https://vuejs.org/v2/guide/components.html?#Listening-to-Child-Components-Events
+
+
+//https://vuejs.org/v2/guide/components.html?#Using-v-model-on-Components
