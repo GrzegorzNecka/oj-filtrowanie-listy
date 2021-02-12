@@ -23,10 +23,8 @@
                 <search-input 
           
                   v-bind:value="searchText"
-                  v-on:input="searchText = $event"
-                  >
+                  v-on:input="searchText = $event" >                  >
 
-                  
                 </search-input>
 
 
@@ -38,6 +36,7 @@
                   v-for="member in members" 
                   v-bind:member="member"
                   v-bind:key="member.id">
+                  
                 </member-item>
 
 				<div class="bg-gray-300 flex flex-row-reverse px-2 py-3">
