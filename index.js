@@ -13,9 +13,6 @@ Vue.component("member-item", {
     class="flex justify-between px-2 py-2">
           <p class="flex text-gray-700">
             <svg 
-            
-               v-on:click="$emit('enlarge-text', 0.1)"
-            
               class="w-2 text-gray-500 mx-2" viewBox="0 0 8 8" fill="currentColor"> <circle cx="4" cy="4" r="3" />
             </svg>
             {{member.first_name + " " + member.last_name}}
