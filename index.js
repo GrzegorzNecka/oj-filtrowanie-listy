@@ -30,7 +30,7 @@ Vue.component("search-input", {
   template: `
   <input 
 
-    v-bind:value="value"
+    v-bind:value="value()"
     v-on:input="$emit('input', $event.target.value)"
 
     type="text" 
@@ -41,17 +41,12 @@ Vue.component("search-input", {
 new Vue({
   el: "#app",
   data: {
-    search: "",
     members
   },
   methods: {
-    onEnlargeText: function(enlargeAmount) {
-      this.postFontSize += enlargeAmount;
-    },
     searchText: function(text) {
-      this.search += text;
-      console.log(this.search);
-      return this.search;
+      console.log(text);
+      return text;
     }
   }
 });
