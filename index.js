@@ -8,7 +8,6 @@ const members = [
 
 Vue.component("member-item", {
   props: ["member"],
-
   template: ` 
   <div 
     class="flex justify-between px-2 py-2">
@@ -43,31 +42,16 @@ new Vue({
   el: "#app",
   data: {
     search: "",
-    members,
-    postFontSize: 1
+    members
   },
   methods: {
     onEnlargeText: function(enlargeAmount) {
       this.postFontSize += enlargeAmount;
     },
     searchText: function(text) {
-      // this.search += text;
+      this.search += text;
       console.log(this.search);
-      return text;
-    }
-  },
-  computed: {
-    filterMembers() {
-      console.log(this.postFontSize);
-      return this.members.filter(member => {
-        return member.first_name
-          .toLowerCase()
-          .includes(this.search.toLowerCase());
-      });
+      return this.search;
     }
   }
 });
-
-// https://vuejs.org/v2/guide/components.html?#Listening-to-Child-Components-Events
-
-//https://vuejs.org/v2/guide/components.html?#Using-v-model-on-Components
