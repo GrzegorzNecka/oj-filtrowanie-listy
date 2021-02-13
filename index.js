@@ -27,7 +27,7 @@ Vue.component("search-input", {
   template: `
   <input 
 
-    v-bind:value="value()"
+    v-bind:value="value"
     v-on:input="$emit('input', $event.target.value)"
 
     type="text" 
@@ -38,20 +38,32 @@ Vue.component("search-input", {
 new Vue({
   el: "#app",
   data: {
-    members
+    members : [...members],
+    text: ""
   },
   methods: {
     searchText: function(text) {
-      console.log(text);
+      this.members = [...members]
 
-      return text;
+      if (typeof text === "undefined") {
+        return;
+      }
+      this.text = text
+      const newMembers = this.members.filter(member => {
+        return member.first_name.toLowerCase().includes(text.toLowerCase());
+      });
+      // this.cons()
+      this.members = newMembers
+ 
     }
   },
   computed: {
-    filterMembers(text) {
+    searchText(text) {
+      console.log(text);
       return this.members.filter(member => {
         return member.first_name.toLowerCase().includes(text.toLowerCase());
       });
-    }
+    },
+   
   }
 });
