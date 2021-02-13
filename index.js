@@ -38,32 +38,23 @@ Vue.component("search-input", {
 new Vue({
   el: "#app",
   data: {
-    members : [...members],
+    members: [...members],
     text: ""
   },
   methods: {
     searchText: function(text) {
-      this.members = [...members]
+      this.members = [...members];
 
       if (typeof text === "undefined") {
         return;
       }
-      this.text = text
-      const newMembers = this.members.filter(member => {
+
+      const foundMembers = this.members.filter(member => {
         return member.first_name.toLowerCase().includes(text.toLowerCase());
       });
-      // this.cons()
-      this.members = newMembers
- 
+      
+      this.text = text;
+      this.members = foundMembers;
     }
-  },
-  computed: {
-    searchText(text) {
-      console.log(text);
-      return this.members.filter(member => {
-        return member.first_name.toLowerCase().includes(text.toLowerCase());
-      });
-    },
-   
   }
 });
