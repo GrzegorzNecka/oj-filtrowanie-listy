@@ -21,21 +21,19 @@
 				</svg>
 
 				<search-input 
-        v-bind:value="memberName"
-        v-on:input="searchText">
-	
+          v-bind:value="memberName"
+          v-on:input="searchText">
 				</search-input>
 
 			</div>
 			<div class="py-5 px-3">
 
 				<member-item 
-        v-on:get-member-name="getMemberName" 
-        v-for="member in members" 
-        v-bind:member="member"
-				v-bind:key="member.id"
-        >
-		
+            v-on:get-member-name="getMemberName" 
+            v-for="member in members" 
+            v-bind:member="member"
+            v-bind:key="member.id"
+            >
 				</member-item>
 
 				<hello-button
