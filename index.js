@@ -43,7 +43,15 @@ new Vue({
   methods: {
     searchText: function(text) {
       console.log(text);
+
       return text;
+    }
+  },
+  computed: {
+    filterMembers(text) {
+      return this.members.filter(member => {
+        return member.first_name.toLowerCase().includes(text.toLowerCase());
+      });
     }
   }
 });
