@@ -12,9 +12,9 @@ Vue.component("member-item", {
   <div 
     class="flex justify-between px-2 py-2">
           <p 
-          
-          
+        
            v-on:click="$emit('get-member-name', $event.target)"
+
           class="flex text-gray-700">
             <svg 
               class="w-2 text-gray-500 mx-2" viewBox="0 0 8 8" fill="currentColor"> <circle cx="4" cy="4" r="3" />
@@ -44,8 +44,7 @@ new Vue({
   data: {
     members: [...members],
     memberName: "",
-    selectedMember: 'nieznajomy'
-   
+    selectedMember: "nieznajomy"
   },
   methods: {
     searchText: function(text) {
@@ -62,9 +61,11 @@ new Vue({
       this.memberName = text;
       this.members = foundMembers;
     },
-    getMemberName: function(member){
-      this.selectedMember = member.innerText
-      console.log(member.innerText)
+    getMemberName: function(member) {
+      if (member.nodeName === "P") {
+        this.selectedMember = member.innerText;
+        console.log(member.innerText);
+      }
     }
   }
 });
