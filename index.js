@@ -20,6 +20,7 @@ Vue.component("member-item", {
    
       class="flex text-gray-700">
         <svg 
+    
          v-bind:class="{ 'text-green-500' : activeClass }"
         class="w-2 text-gray-500  mx-2" viewBox="0 0 8 8" fill="currentColor"> <circle cx="4" cy="4" r="3" /></svg>
 

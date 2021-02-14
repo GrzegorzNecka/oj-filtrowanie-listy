@@ -20,28 +20,17 @@
 						fill="black" fill-opacity="0.54" />
 				</svg>
 
-				<search-input 
-          v-model="memberName"
-          v-on:input="searchText">
+				<search-input v-model="memberName" v-on:input="searchText">
 				</search-input>
 
 			</div>
 			<div class="py-5 px-3">
 
-				<member-item 
-            v-on:get-member-name="getMemberName" 
-       
-            v-for="member in members" 
-            v-bind:member="member"
-            v-bind:key="member.id"
-
-            v-bind:active-class="activeClass"
-          
-            >
+				<member-item v-on:get-member-name="getMemberName" v-for="member in members" v-bind:member="member"
+					v-bind:key="member.id" v-bind:active-class="activeClass">
 				</member-item>
 
-				<hello-button
-          v-on:click.native="displayMessage">
+				<hello-button v-on:click.native="displayMessage">
 				</hello-button>
 
 			</div>
