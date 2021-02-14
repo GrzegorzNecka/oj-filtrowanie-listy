@@ -8,14 +8,13 @@ const members = [
 
 Vue.component("member-item", {
   props: ["member", "activeClass"],
-  data: function () {
+  data: function() {
     return {
       active: true
-    }
+    };
   },
   template: ` 
   <div class="flex justify-between px-2 py-2">
-
     <p 
       v-on:click="$emit('get-member-name', $event.target, active)"
    
@@ -80,13 +79,11 @@ new Vue({
       this.members = foundMembers;
     },
 
-
     getMemberName: function(member, active) {
       if (member.nodeName === "P") {
         this.selectedMember = member.innerText;
-      
-        this.activeClass = active
-     
+
+        this.activeClass = active;
       }
     },
 
