@@ -21,7 +21,7 @@
 				</svg>
 
 				<search-input 
-          v-bind:value="memberName"
+          v-model="memberName"
           v-on:input="searchText">
 				</search-input>
 
@@ -30,14 +30,18 @@
 
 				<member-item 
             v-on:get-member-name="getMemberName" 
+       
             v-for="member in members" 
             v-bind:member="member"
             v-bind:key="member.id"
+
+            v-bind:active-class="activeClass"
+          
             >
 				</member-item>
 
 				<hello-button
-          v-on:click.native="viewMessage">
+          v-on:click.native="displayMessage">
 				</hello-button>
 
 			</div>
