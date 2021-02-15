@@ -28,12 +28,11 @@ Vue.component("hello-button", {
 });
 
 Vue.component("member-item", {
-  props: ["member", "selectedMember"],
+  props: ["member", "selectedMember", "activeClass"],
 
   computed: {
     setActiveClass: function() {
-      const name = this.member.first_name + " " + this.member.last_name;
-      if (this.selectedMember === name) {
+      if (this.activeClass === this.member.id) {
         return true;
       }
     }
@@ -42,7 +41,7 @@ Vue.component("member-item", {
   template: ` 
   <div class="flex justify-between px-2 py-2">
 
-    <p 
+    <p v-bind:data-id="member.id" 
     
        v-on:click="$emit('get-member-name', $event.target)"
    
@@ -70,7 +69,8 @@ new Vue({
   data: {
     members: [...members],
     memberName: "",
-    selectedMember: "nieznajomy"
+    selectedMember: "nieznajomy",
+    activeClass: ''
   },
   methods: {
     searchText: function(text) {
@@ -90,8 +90,8 @@ new Vue({
 
     getMemberName: function(member) {
 
-      console.dir(member)
       if (member.nodeName === "P") {
+        this.activeClass = parseInt(member.dataset.id);
         this.selectedMember = member.innerText;
       }
     },

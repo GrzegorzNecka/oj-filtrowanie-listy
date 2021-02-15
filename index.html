@@ -35,6 +35,8 @@
           v-for="member in members" 
           v-bind:member="member"
 					v-bind:key="member.id" 
+    
+          v-bind:active-class="activeClass"
         >
 				</member-item>
 
