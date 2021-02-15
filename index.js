@@ -44,7 +44,7 @@ Vue.component("member-item", {
 
     <p 
     
-       v-on:click="$emit('get-member-name', $event.target, active)"
+       v-on:click="$emit('get-member-name', $event.target)"
    
        class="flex text-gray-700">
         <svg 
@@ -88,7 +88,9 @@ new Vue({
       this.members = foundMembers;
     },
 
-    getMemberName: function(member, active) {
+    getMemberName: function(member) {
+
+      console.dir(member)
       if (member.nodeName === "P") {
         this.selectedMember = member.innerText;
       }
