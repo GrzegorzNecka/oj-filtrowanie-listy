@@ -6,35 +6,6 @@ const members = [
   { id: 2, first_name: "Marcin", last_name: "Czarkowski", role: "Member" }
 ];
 
-Vue.component("member-item", {
-  props: ["member", "activeClass"],
-  data: function() {
-    return {
-      active: true
-    };
-  },
-  template: ` 
-  <div class="flex justify-between px-2 py-2">
-    <p 
-      v-on:click="$emit('get-member-name', $event.target, active)"
-   
-      class="flex text-gray-700">
-        <svg 
-    
-         v-bind:class="{ 'text-green-500' : activeClass }"
-        class="w-2 text-gray-500  mx-2" viewBox="0 0 8 8" fill="currentColor"> <circle cx="4" cy="4" r="3" /></svg>
-
-      {{member.first_name + " " + member.last_name}}
-
-    </p>
-    <p class="text-gray-500 font-thin">
-
-      {{member.role}}
-
-    </p>
-  </div>`
-});
-
 Vue.component("search-input", {
   props: ["value"],
   template: `
@@ -56,13 +27,50 @@ Vue.component("hello-button", {
 		</div>`
 });
 
+Vue.component("member-item", {
+  props: ["member", "selectedMember"],
+
+  computed: {
+    setActiveClass: function() {
+      const name = this.member.first_name + " " + this.member.last_name;
+      if (this.selectedMember === name) {
+        return true;
+      }
+    }
+  },
+
+  template: ` 
+  <div class="flex justify-between px-2 py-2">
+
+    <p 
+    
+       v-on:click="$emit('get-member-name', $event.target, active)"
+   
+       class="flex text-gray-700">
+        <svg 
+
+            v-bind:class="{ 'text-green-500' : setActiveClass }"
+
+            class="w-2 text-gray-500  mx-2" viewBox="0 0 8 8" fill="currentColor"> <circle cx="4" cy="4" r="3" />
+        </svg>
+
+      {{member.first_name + " " + member.last_name}}
+
+    </p>
+    <p class="text-gray-500 font-thin">
+
+      {{member.role}}
+
+    </p>
+  </div>`
+});
+
 new Vue({
   el: "#app",
   data: {
     members: [...members],
     memberName: "",
-    selectedMember: "nieznajomy",
-    activeClass: false
+    selectedMember: "nieznajomy"
   },
   methods: {
     searchText: function(text) {
@@ -83,8 +91,6 @@ new Vue({
     getMemberName: function(member, active) {
       if (member.nodeName === "P") {
         this.selectedMember = member.innerText;
-
-        this.activeClass = active;
       }
     },
 
